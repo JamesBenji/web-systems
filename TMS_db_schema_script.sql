@@ -13,9 +13,9 @@ CREATE TABLE TMS_driver(
     residence VARCHAR(100) NOT NULL,
     date_of_birth DATE NOT NULL,
     emp_img LONGBLOB,
-    `emp_img_type` VARCHAR(5) NOT NULL,
-    `permit_no` VARCHAR(20) NOT NULL,
-    work_status VARCHAR(10) NOT NULL,
+    emp_img_type VARCHAR(5) NOT NULL,
+    permit_no VARCHAR(20) NOT NULL,
+    work_status VARCHAR(14) NOT NULL DEFAULT 'available',
 
     acc_password VARCHAR(100) NOT NULL DEFAULT 'newUser',
     acc_status VARCHAR(10) NOT NULL DEFAULT 'new',
@@ -37,7 +37,8 @@ CREATE TABLE TMS_manager(
     date_of_birth DATE NOT NULL,
     emp_img LONGBLOB,
     emp_img_type VARCHAR(5) NOT NULL,
-    acc_password VARCHAR(30) NOT NULL DEFAULT 'newUser',
+    acc_password VARCHAR(100) NOT NULL DEFAULT 'newUser',
+    acc_status VARCHAR(10) NOT NULL DEFAULT 'new',
     last_login DATE,
     CHECK (sex IN ('M' or 'F')),
     CHECK (CHAR_LENGTH(acc_password) > 5),
@@ -133,8 +134,3 @@ DELIMITER;
 SELECT TRIGGER_NAME, EVENT_OBJECT_TABLE, ACTION_TIMING, ACTION_STATEMENT
 FROM INFORMATION_SCHEMA.TRIGGERS
 WHERE EVENT_OBJECT_TABLE = 'TMS_driver';
-
---DATA ENTRY
-
-INSERT INTO `TMS_driver` (emp_id, f_name, l_name, tel_no, email, sex, residence, date_of_birth, emp_img, emp_img_type, permit_no, work_status, acc_password, acc_status, last_login) 
-VALUES ('E001', 'John', 'Mark', '0700020136','jmakr@gmail' , 'M', 'Makindye', '12-04-2002',NULL, 'jpg', '1001001001', 'available', NULL, 'New', NULL);
