@@ -1,0 +1,60 @@
+:root{
+    --hima_green: #009688;
+}
+
+body{
+    width: 50%;
+    margin: 5rem auto;
+    background-color: #EEE;
+}
+
+form{
+    background-color: #FFF;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: left;
+    justify-content: center;
+    padding: 2rem;
+
+}
+
+form input{
+    border: 2px solid var(--hima_green);
+    border-radius: 3px;
+    margin: 0 10px;
+    background-color: #EEE;
+    font-size: 1rem;
+    min-height: 2rem;
+    padding: .6rem;
+    transition: all .5s;
+}
+
+form input:hover::placeholder{
+    color: white;
+}
+
+
+form input:hover{
+    background-color: #009688;
+    color: #FFF;
+    font-size: 1.2rem;
+}
+
+form input[type='submit']{
+    border: 2px solid var(--hima_green);
+    width: fit-content;
+    border-radius: 3px;
+    margin: 0 10px;
+    background-color: #EEE;
+    font-size: 1rem;
+    padding: .6rem;
+    align-self: center;
+    transition: all .5s;
+}
+
+form input[type='submit']:hover{
+    color: white;
+    background-color: #009688;
+}

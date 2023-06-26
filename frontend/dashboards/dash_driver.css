@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --hima_green: #009688;
+}
+
+*{
+    font-family: Poppins;
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 3rem 3rem;
+    margin: auto;
+    display: flex;
+    background-color: #eee;
+}
+
+.left-nav{
+    flex-basis: 20%;
+    flex-grow: 2;
+    flex-shrink: 8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: fit-content;
+    background-color: var(--hima_green);
+    padding: 10px;
+    border-radius: 10px;
+    /* padding: 2rem 0 -3rem 0;
+    position: relative; */
+}
+
+
+
+.left-nav img{
+    margin: 0 0 3px 0;
+}
+
+.left-nav div{
+    font-size: 1rem;
+    margin: 15px 0 2px 0;
+    color: #FFF;
+}
+
+.left-nav section{
+    /* background-color: rgba(0,150,136, 1); */
+    border: 3px solid #009688;
+    background-color: white;
+    width: 98%;
+    text-align: center;
+    padding: 1rem 0;
+    margin: .5rem 0px;
+    border-radius: 1rem;
+    color: #000;
+}
+
+
+
+.left-nav section button{
+    color: #000;
+    font-size: 1rem;
+}
+
+.left-nav section button:hover{
+    color: #009688;
+    font-size: 1.3rem;
+    transition: all .4s;
+}
+
+.left-nav section button a{
+    text-decoration: none;
+    color: #000;
+}
+
+.img-bottom{
+    width: 100%;
+}
+/* ########################################################### */
+
+.main-content{
+    flex-basis: 80%;
+    flex-grow: 8;
+    flex-shrink: 2;
+    width: 100%;
+    margin-left: 1.5rem;
+    background-color: var(--hima_green);
+    padding: 1rem;
+    height: fit-content;
+    border-radius: 10px;
+    color: #FFF;
+}
+
+#hr-dash-nav{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    min-width: 100%;
+}
+#header span{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+#header input{
+    margin: .5rem 2rem 0 0;
+}
+
+#greeting{
+    font-size: 1.2rem;
+    margin: .8rem 0 2rem 0;
+}
+
+#-hr{
+    height: 5px;
+    color: #FFF;
+    margin-bottom: 1.6rem;
+    background-color: #FFF;
+}
+
+#dash-info label{
+    font-size: 2rem;
+    margin-top: 1.5rem;
+}
+
+#cur-del,
+#up-del,
+#rec-del {
+    width: 80%;
+    min-height: 5rem;
+    border: 8px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    background-color: #eee;
+    margin: 2rem 0 2rem 0;
+}
+table{
+    color: black;
+}
+
+thead th{
+    padding: 1rem;
+}
+
+tbody{
+    background-color: #FFF;
+}
+
+tbody tr{
+    border-collapse: collapse;
+}
+
+tbody tr td{
+    padding: 10px;
+    font-size: 1rem;
+
+}
+
+.profile-Div{
+    width: 100%;
+    background-color: #009688;
+    color: #FFF;
+    display: block;
+
+}
+
+.report-div{
+    width: 100%;
+    background-color: #009688;
+    color: #FFF;
+    display: block;
+
+}
+
+.action-btn{
+    padding: 10px;
+    color: white;
+    background-color: #009688;
+    font-size: 1rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+.profile-Div h1 ~ div{
+    margin: 1rem;
+    text-align: center;
+}
+
+.l-nav-btn{
+    width: 100%;
+    height: 2rem;
+    background-color: transparent;
+    border: none;
+}
+
+.row{
+    color: black;
+}

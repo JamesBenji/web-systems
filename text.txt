@@ -1,0 +1,21 @@
+SELECT * FROM tms_driver INNER JOIN tms_delivery USING (emp_id);
+SELECT emp_id FROM tms_driver INNER JOIN tms_delivery USING (emp_id);
+
+$emp_id_arr = []
+while(hasrow=true){
+    assign row assoc value to variable
+    append emp_id array
+}
+
+$all_emp_report_data = []
+
+foreach ($emp_id_arr as $emp_id){
+    SELECT count(*) from tms_driver INNER JOIN tms_delivery USING (emp_id) WHERE emp_id = $emp_id
+    create assoc for emp
+    append $all_emp_report_data
+}
+
+return json of $all_emp_report_data
+
+
+fix mising data in the report table
