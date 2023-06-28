@@ -18,9 +18,9 @@
 
         <section id="nav">
             <ul>
-                <li> <a href="#">Home</a> </li>
-                <li> <a href="#">About</a> </li>
-                <li> <a href="#">Contact</a> </li>
+                <li> <a href="#home">Home</a> </li>
+                <li> <a href="#about">About</a> </li>
+                <li> <a href="#contact">Contact</a> </li>
             </ul>
 
         </section>
@@ -36,7 +36,8 @@
 
     <main>
 
-        <div class="homepage">
+      
+        <div class="homepage" id="home">
             <div class="homepage-hr">
                 <div class="homepage-text">Delivering to<br> our customers<br> in time<br>
                 <a href="./frontend/user_login.php" class="nav-btn big-btn">Login</a>
@@ -44,10 +45,48 @@
             <img src="./frontend/hima_truck.jpg" alt="Hima Truck" width="350px">
             </div>
             
-        </div>
-        
+
+        </div>   
 
     </main>
+
+    <div id="about">
+        <h1>About Us</h1>
+        <p>Our innovative technology empowers drivers 
+        with real-time monitoring and comprehensive 
+        tools, enabling them to efficiently navigate 
+        their routes while maintaining the highest 
+        safety standards.</p>
+
+        <p>We understand the critical role drivers play 
+        in the cement delivery process, and we strive 
+        to empower them with advanced tools that enhance 
+        their efficiency, safety, and overall experience.</p>
+
+        <p><br><b>Join us</b> on this exciting journey as we shape the 
+        future of cement transportation together.</p>
+        <section>
+            <br><br><a href="./frontend/user_login.php" class="nav-btn">Login</a>
+        </section>
+
+        
+        </div>
+
+        <div id="contact">
+        <h1>Contact Us</h1>
+        <p><b></b>
+
+            Have questions, feedback, or need assistance? 
+            Our dedicated team is here to help. 
+            Feel free to reach out to us using any of 
+            the following methods:</p>
+
+            <blockquote>
+            Phone: +256-7605-64400 (Mon-Fri, 9:00 am - 5:00 pm)<br>
+            Email: himatms@gmail.com
+            </blockquote>
+
+        </div>
     
 </body>
 </html>

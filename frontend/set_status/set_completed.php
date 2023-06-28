@@ -1,11 +1,25 @@
-<?php 
-    session_start();
+<?php
+session_start();
+require "../../controller/config.php";
+
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
+
+if ($data === null) {
+  // JSON decoding failed
+  echo json_encode(['error' => 'Invalid JSON data']);
+  exit;
+}
+
+$emp_id = $_SESSION['emp_id'];
+$delivery_id = $data['delivery_id'];
+
+if (mysqli_query($connection, "UPDATE tms_delivery SET delivery_status = 'completed' WHERE delivery_status = 'ongoing' AND emp_id = '$emp_id'")){
+    echo "success updating db";
+
+} else {
+    echo "failed update";
+}
 
 
-    require "../../controller/functions.php";
-   
-    $emp_id = $_SESSION['emp_id'];
-    $del_id = $_GET['del_id'];
-
-    $update_q = mysqli_query($connection, "UPDATE tms_delivery SET delivery_status = 'completed' WHERE emp_id = '$emp_id' AND delivery_id = '$del_id'");
 ?>

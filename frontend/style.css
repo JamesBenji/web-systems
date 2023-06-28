@@ -1,5 +1,10 @@
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
+
+
 *{
     font-family: 'Poppins', "sans serif";
     font-size: 1rem;
@@ -161,7 +166,7 @@ main{
 }
 
 .homepage-text{
-    font-size: 4rem;
+    font-size: 3.4rem;
 }
 
 .homepage img{
@@ -171,3 +176,14 @@ main{
     margin-top: 3%;
 }
 
+#about,
+#contact{
+    width: 80%;
+    margin: 3rem auto auto auto;
+}
+
+#about h1, 
+#contact h1{
+    color: var(--hima_green);
+    font-size: 3.5rem;
+}

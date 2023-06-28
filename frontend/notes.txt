@@ -67,3 +67,17 @@ $table = "tms_".$role;
  echo json_encode($res_arr);
 
 ?>
+
+
+let xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+
+
+
+    }
+  };
+
+  xhttp.open("GET", "../set_status/set_completed.php", false);
+  xhttp.send();

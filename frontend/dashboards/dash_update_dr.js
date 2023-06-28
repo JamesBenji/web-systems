@@ -1,49 +1,6 @@
 let json_ret;
 let json_ret_len;
 
-function set_status_complete(deli_id) {
-  let xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      console.log(this.responseText);
-
-      // send data to php
-
-      // Data to be sent to PHP
-let data = {
-  delivery_id: deli_id
-};
-
-// AJAX request using Fetch API
-fetch('../set_status/set_complete.php', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(data),
-})
-  .then(response => response.json())
-  .then(result => {
-    // Handle the response from PHP
-    console.log(result);
-  })
-  .catch(error => {
-    // Handle any errors
-    console.error(error);
-  });
-
-
-
-
-
-
-
-    }
-  };
-
-  xhttp.open("GET", "../set_status/set_completed.php", false);
-  xhttp.send();
-}
 
 function set_status_ongoing() {
   let xhttp = new XMLHttpRequest();
@@ -62,19 +19,18 @@ function load_cur_del() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json_ret = JSON.parse(this.responseText);
-      console.log(json_ret);
       json_ret_len = json_ret.length;
-      console.log(json_ret.length);
-      console.log("b4 loop");
       let tbody = document.getElementById("tbody_cur");
 
       let i = 0;
       while (i < json_ret_len) {
-        console.log("in loop");
+        
         let finishbtn = document.createElement("button");
         finishbtn.textContent = "Mark as completed"
         finishbtn.classList.add("action-btn");
         finishbtn.type = 'button';
+        finishbtn_id = 'btn'+i;
+        finishbtn.id = finishbtn_id;
        
 
         let rowid = 'complete_btn' + i
@@ -92,12 +48,32 @@ function load_cur_del() {
         row.dataset.del_id = json_ret[i].delivery_id;
 
         tbody.appendChild(row);
+
+        
         finishbtn.addEventListener('click', function(e) {
-          let del_id = e.target.closest('tr').dataset.del_id;
-          url = set_status_complete(del_id);
-          console.log('competed clicked')
-          console.log(url)
-          console.log("function executing")
+          // let del_id = e.target.closest('tr').dataset.del_id;
+
+          var data = {
+            delivery_id: e.target.closest('tr').dataset.del_id
+          };
+          console.log(data.delivery_id)
+
+          console.log("Data obj" + data.delivery_id)
+        
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "../set_status/set_completed.php", true);
+          xhr.setRequestHeader("Content-Type", "utf-8");
+          xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              var response = xhr.responseText;
+              console.log("PHP Script response: "+response);
+            }
+          };
+          xhr.send(JSON.stringify(data));
+          console.log("sent data: "+JSON.stringify(data));
+
+
+          
 
           setTimeout(function (){
             window.location.reload();
@@ -120,10 +96,7 @@ function load_rec_del() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json_ret = JSON.parse(this.responseText);
-      console.log(json_ret);
       json_ret_len = json_ret.length;
-      console.log(json_ret.length);
-      console.log("b4 loop");
       let tbody = document.getElementById("tbody_rec");
 
       let i = 0;
@@ -184,10 +157,7 @@ function load_up_del() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       json_ret = JSON.parse(this.responseText);
-      console.log(json_ret);
       json_ret_len = json_ret.length;
-      console.log(json_ret.length);
-      console.log("b4 loop");
       let tbody = document.getElementById("tbody_up");
 
       let i = 0;

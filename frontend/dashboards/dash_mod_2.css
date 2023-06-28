@@ -36,7 +36,7 @@ nav div button{
 nav div button:hover{
     background-color: #fff;
     border: 2px solid var(--hima_green);
-    padding: 2px;
+    padding: 8px;
     color: var(--hima_green);
 }
 
@@ -61,4 +61,63 @@ nav div button:hover{
     text-align: center;
     padding: 10px .5rem;
 
+}
+
+/* #addUserForm, form{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#addUserForm label{
+    margin: 3px;
+
+
+}
+
+#addUserForm label input{
+    border: 2px solid #009688;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+
+} */
+
+#content-area{
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    border: 3px solid #009688;
+    padding: 1rem;
+    min-height: 0px;
+}
+
+#content-area form label{
+    margin: 5px 2rem;
+
+}
+
+#content-area form h3{
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+#content-area form label input{
+    border: 3px solid #009688;
+    border-radius: 1rem;
+    margin: .5rem 0 .5rem 2rem;
+    padding: 4px;
+}
+
+#content-area form label input[type='submit']{
+    padding: 15px;
+    background-color: #009688;
+    color: #fff;
 }

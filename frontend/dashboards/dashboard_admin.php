@@ -36,23 +36,19 @@
 
 <body>
     <nav>
-        <div><?php echo $username; ?>'s<br> Dashboard</div>
+        <div>Admin <?php echo $username; ?>'s<br> Dashboard</div>
         <div><button type="button" onclick="showAddUser()">Add user</button></div>
         <div><button type="button" onclick="showUpdateUser()">Update User Info</button></div>
         <div><button type="button" onclick="showDeleteUser()">Delete User</button></div>
         <div id="img_icon" > 
             
+          
             <img 
                 src="<?php echo $img_src_raw_data; ?>" 
                 alt="Admin img"
                 style="width: 40px; height:40px; border-radius: 50%;"
                 >
-
-            <div id="acc-opt">
-                <button type="button">Profile</button>
-                <button type="button">Log out</button>
-            </div>
-    
+ 
         </div>
     </nav>
 
@@ -60,6 +56,20 @@
         
 
     </main>
+    <form  action="../../controller/logout.php" method="post">
+                    <input type="submit" value="Log Out" class="nav-btn" 
+                    style="
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #009688;
+                    padding: 10px 12px;
+                    border: 2px solid #111;
+                    border-radius: .5rem;
+                    font-weight: 500;
+                    transition: all 1s;
+                    font-size: 1rem;
+                    margin-left: 40%;
+                    "></form>
 
     <script>
     let img = document.querySelector('#img_icon img');
@@ -83,7 +93,7 @@
             "<label>Image: <input type='file' name='img'></label><br>" +
             "<label>Permit number: <input type='text' name='permit_no'></label><br>" +
             "<label><input type='submit' value='Create driver'></label><br>" ;
-            content_area.innerHTML = "<form name='add_user' action='../admin_ops/addUser.php' method='post'><h3>Add User</h3>" + add_content +"</form>";
+            content_area.innerHTML = "<form name='add_user' id='addUserForm' action='../admin_ops/addUser.php' method='post'><h3>Add User</h3>" + add_content +"</form>";
         }
 
         function showUpdateUser(){

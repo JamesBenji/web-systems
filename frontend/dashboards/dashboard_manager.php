@@ -43,21 +43,32 @@
     <title>Driver Dashboard</title>
 </head>
 <body>
+
+
+    <nav>
+    <section class="d_details">
+                <div><b><?php echo $user; ?>'s Dashboard</b><br><?php echo $emp_id; ?></div>
+                
+    </section>
+    <section class="d_actions">
+    <button onclick="showProfile();" type="button" class="l-nav-btn">Profile</button>
+    <button onclick="showReport()" class="l-nav-btn">Drivers' Report</button>
+    <button onclick="showStat()" class="l-nav-btn">Statistics</button>
+    <button onclick="showSearch()" class="l-nav-btn">Search Driver</button>
+    </section>
+
     <section class="left-nav">
         <img src= "<?php echo $img_src_raw_data; ?>" 
         alt="" 
         id="user_img"
-        style="width: 100px; height:100px; border-radius: 50%;"
+        style="width: 50px; height:50px; border-radius: 50%;"
         >
-        <div><?php echo $user; ?></div>
-        <div><?php echo $emp_id; ?></div> 
-        <section ><button onclick="showProfile();" type="button" class="l-nav-btn">Profile</button></section>
-        <section><button onclick="showReport()" class="l-nav-btn">Drivers' Report</button> </section>
-        <section><button onclick="showStat()" class="l-nav-btn">Statistics</button> </section>
-
-        <img class="img-bottom" src="../hima_logo.png" alt=""> 
 
 </section> 
+
+
+    </nav>
+    
 
     <div class="main-content"> 
         <form  action="../../controller/logout.php" method="post" id="main-c-form">
@@ -68,9 +79,9 @@
                     style="
                     text-decoration: none;
                     color: #fff;
-                    background-color: var(--hima_green);
-                    padding: 0.3rem 1rem;
-                    border: 2px solid #fff;
+                    background-color: #009688;
+                    padding: 10px 12px;
+                    border: 2px solid #111;
                     border-radius: .5rem;
                     font-weight: 500;
                     transition: all 1s;
@@ -103,11 +114,11 @@
         profileDiv.hidden = true;
 
         // Set the content of the profileDiv
-        let prof_inner_html = "<h1>Profile</h1>" +
-        "<div>Name: <span id='p_name'></span> </div><br>" +
-        "<div>Email: <span id='p_email'></span> </div><br>" +
-        "<div>Telephone: <span id='p_tel'></span> </div><br>" +
-        "<div>Residence: <span id='p_res'></span> </div><br>";
+        let prof_inner_html = "<h1 style='margin-bottom: 30px;'>Profile</h1>" +
+        "<h3>Name: <span id='p_name'></span> </h3><br>" +
+        "<h3>Email: <span id='p_email'></span> </h3><br>" +
+        "<h3>Telephone: <span id='p_tel'></span> </h3><br>" +
+        "<h3>Residence: <span id='p_res'></span> </h3><br>";
 
         profileDiv.innerHTML = prof_inner_html;
 
@@ -206,13 +217,14 @@ xhttp3.open("GET", "./fetch_stat.php", true);
 xhttp3.send()
 
 
-
-
-
 function showStat(){
     stat_area.hidden = !stat_area.hidden
 
 }
+
+// search driver
+
+// expect input of name or emp_id and receive location, delivery details and monthly report
 
     </script>
 </body>

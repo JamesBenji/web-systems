@@ -87,16 +87,4 @@ function updateNewUserPass($newPass, $user_id,$connection){
     
 }
 
-function logoutUser($connection){
-    $connection -> close();
-    session_unset();
-    session_destroy();
-    session_write_close();
-    header("Location: ../index.php");
-    exit();
-}
-
-// function generateCode(){
-//     return random_int(100000,999999);
-// }
 ?>

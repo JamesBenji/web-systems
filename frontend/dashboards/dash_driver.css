@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+html{
+    scroll-behavior: smooth;
+}
+
 :root{
     --hima_green: #009688;
 }
@@ -10,13 +14,52 @@
     padding: 0;
 }
 body{
-    padding: 3rem 3rem;
+    padding: 3px 3rem;
     margin: auto;
-    display: flex;
     background-color: #eee;
 }
 
-.left-nav{
+nav{
+    background-color: var(--hima_green);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px 1rem;
+    margin: 0 auto;
+}
+#header .nav-btn:hover{
+    background-color: #fff;
+    color: var(--hima_green);
+}
+
+.d_details{
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0 5px;
+}
+
+nav section{
+    display: flex;
+    
+}
+
+nav section button a,
+nav section button {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 5px 15px;
+    padding-bottom: -1px;
+    padding-top: -2px;
+}
+
+
+
+/* .left-nav{
     flex-basis: 20%;
     flex-grow: 2;
     flex-shrink: 8;
@@ -27,8 +70,12 @@ body{
     background-color: var(--hima_green);
     padding: 10px;
     border-radius: 10px;
-    /* padding: 2rem 0 -3rem 0;
-    position: relative; */
+    padding: 2rem 0 -3rem 0;
+    position: relative;
+} */
+
+/* .left-nav{
+    
 }
 
 
@@ -44,7 +91,6 @@ body{
 }
 
 .left-nav section{
-    /* background-color: rgba(0,150,136, 1); */
     border: 3px solid #009688;
     background-color: white;
     width: 98%;
@@ -53,9 +99,9 @@ body{
     margin: .5rem 0px;
     border-radius: 1rem;
     color: #000;
-}
+} */
 
-
+/* 
 
 .left-nav section button{
     color: #000;
@@ -75,20 +121,43 @@ body{
 
 .img-bottom{
     width: 100%;
-}
+} */
 /* ########################################################### */
 
+#profile{
+    background-color: #eee;
+    border: none;
+    text-align: center;
+    transition: all 1s;
+
+}
+#profile h5{
+    margin: 5px;
+}
+
+
 .main-content{
-    flex-basis: 80%;
+    /* flex-basis: 80%;
     flex-grow: 8;
-    flex-shrink: 2;
-    width: 100%;
-    margin-left: 1.5rem;
-    background-color: var(--hima_green);
+    flex-shrink: 2; */
+    /* width: 100%; */
+    /* margin-left: 1.5rem; */
+    background-color: #eee;
     padding: 1rem;
-    height: fit-content;
+    min-height: 100vh;
+    background-image: url("../hima_logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+    
+    
     border-radius: 10px;
-    color: #FFF;
+    border: 3px solid var(--hima_green);
+    color: #000;
+    margin: 2rem auto;
+    width: 100%;
+
+
 }
 
 #hr-dash-nav{
@@ -115,7 +184,7 @@ body{
 }
 
 #greeting{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: .8rem 0 2rem 0;
 }
 
@@ -123,7 +192,7 @@ body{
     height: 5px;
     color: #FFF;
     margin-bottom: 1.6rem;
-    background-color: #FFF;
+    background-color: var(--hima_green);
 }
 
 #dash-info label{
@@ -140,10 +209,15 @@ body{
     border-radius: 3px;
     outline: none;
     background-color: #eee;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem auto 2rem auto;
+
+    
 }
 table{
+    
     color: black;
+    width: 100%;
+    
 }
 
 thead th{

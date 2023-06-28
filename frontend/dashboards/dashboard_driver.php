@@ -12,8 +12,10 @@
 
     $res = $img_q -> get_result();
 
-    $email = mysqli_query($connection, "SELECT email FROM $table WHERE emp_id = '$emp_id'") -> fetch_assoc()['email'];
-
+    $data = mysqli_query($connection, "SELECT email, residence,tel_no, work_status FROM $table WHERE emp_id = '$emp_id'")->fetch_assoc();
+    $email = $data['email'];
+    $tel_no = $data['tel_no'];
+    $residence = $data['residence'];
     // $img_query = "";
     // $result = $connection -> query($img_query);
 
@@ -39,26 +41,36 @@
     <title>Driver Dashboard</title>
 </head>
 <body>
-    <section class="left-nav">
-        <img src= "<?php echo $img_src_raw_data; ?>" 
-        alt="" 
-        id="user_img"
-        style="width: 100px; height:100px; border-radius: 50%;"
-        >
-        <div><?php echo $user; ?></div>
-        <div><?php echo $emp_id; ?></div> 
-        <div><?php echo $email; ?></div> 
+
+       <nav>
+            <section class="d_details">
+                <div><b><?php echo $user; ?>'s Dashboard</b><br><?php echo $emp_id; ?></div>
+            
+            </section>
+
+            <section class="d_actions">
+            <button class="l-nav-btn" > <a href="#rec-del">Report</a> </button> 
+            <button onclick="show_D_Profile()" class="l-nav-btn" id="profile-btn"> <a href="#profile">Profile</a> </button> 
+            </section>
+
+            <!-- <img class="img-bottom" src="../hima_logo.png" alt="">  -->
 
 
-        <section><button onclick="showReport()" class="l-nav-btn" > <a href="#rec-del">Drivers' Report</a> </button> </section>
+            <section style="display: flex; align-items:center; justify-content:center;">
+            <img src= "<?php echo $img_src_raw_data; ?>" 
+            alt="" 
+            id="user_img"
+            style="width: 50px; height:50px; border-radius: 50%;"
+            >
 
-
-        <img class="img-bottom" src="../hima_logo.png" alt=""> 
-
-</section> 
+            </section>
+       </nav>
+    <!-- <section class="left-nav"> -->
+<!-- 
+</section>  -->
 
     <div class="main-content"> 
-        <form  action="../controller/logout.php" method="post">
+        <form  action="../../controller/logout.php" method="post">
         <div id="hr-dash-nav">
         
                 <div id="header"><span>Driver Dashboard</span> 
@@ -66,9 +78,9 @@
                     style="
                     text-decoration: none;
                     color: #fff;
-                    background-color: var(--hima_green);
-                    padding: 0.3rem 1rem;
-                    border: 2px solid #fff;
+                    background-color: #009688;
+                    padding: 10px 12px;
+                    border: 2px solid #111;
                     border-radius: .5rem;
                     font-weight: 500;
                     transition: all 1s;
@@ -79,13 +91,16 @@
                 <div id="greeting">Welcome <?php echo $user;?></div>
                 <hr id="-hr">
         </div>
+        <div id="profile">
+
+        </div>
 
         <div id="dash-info">
             <label>Current Delivery</label><br>
 
             
             <div id="cur-del">
-                <table>
+                <table >
                     <thead>
                         <th>Delivery Details</th>
                         <th>Location</th>
@@ -116,7 +131,7 @@
                 </table>
             </div>
 
-            <label>Recent Deliveries</label> <br>
+            <label>Recent Deliveries / Report</label> <br>
             <div id="rec-del">
             <table>
                     <thead>
@@ -141,6 +156,26 @@
 
 
     </div>
+    <script>
+        let output_area = document.getElementById('profile')
+        output_area.hidden = true
+
+        function show_D_Profile(){
+            output_area.hidden = !output_area.hidden
+            
+            output_area.style.border = "5px solid #009688"
+
+            let content = "<h5>Name: "+"<?php echo $user; ?>"+"</h5>"+
+                          "<h5>Employee ID: "+"<?php echo $emp_id; ?>"+"</h5>"+
+                          "<h5>Email: "+"<?php echo $email; ?>"+"</h5>"+
+                          "<h5>Residence: "+"<?php echo $residence; ?>"+"</h5>";
+
+
+
+            output_area.innerHTML=content
+        }
+    </script>
     <script src="./dash_update_dr.js"></script>
+    
 </body>
 </html>
