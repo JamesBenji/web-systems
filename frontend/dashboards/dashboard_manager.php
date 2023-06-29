@@ -40,7 +40,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./dash_driver.css">
-    <title>Driver Dashboard</title>
+    <title>Manager Dashboard</title>
 </head>
 <body>
 
@@ -50,11 +50,11 @@
                 <div><b><?php echo $user; ?>'s Dashboard</b><br><?php echo $emp_id; ?></div>
                 
     </section>
-    <section class="d_actions">
-    <button onclick="showProfile();" type="button" class="l-nav-btn">Profile</button>
-    <button onclick="showReport()" class="l-nav-btn">Drivers' Report</button>
-    <button onclick="showStat()" class="l-nav-btn">Statistics</button>
-    <button onclick="showSearch()" class="l-nav-btn">Search Driver</button>
+    <section class="d_actions" id="manager_nav">
+        <button onclick="showProfile();" type="button" class="l-nav-btn">Profile</button>
+        <button onclick="showReport()" class="l-nav-btn">Drivers' Report</button>
+        <button onclick="showStat()" class="l-nav-btn">Statistics</button>
+        <button onclick="showSearch()" type="button" class="l-nav-btn">Search Driver</button>
     </section>
 
     <section class="left-nav">
@@ -97,6 +97,8 @@
                 <div id="driver-report"></div>
 
                 <div id="statistics"></div>
+
+                <div id="search-driver" hidden="true"></div>
         </div>
 
        
@@ -171,7 +173,21 @@ xhttp2.onreadystatechange = function() {
                                     +'<h3>Contact :</h3>'+ rows[i].emp_email +'<br>'+ rows[i].emp_tel_no +'<br><br>'
                                     + '<b>Ongoing tasks:</b> ' + rows[i].count_ongoing + '<br>'
                                     + '<b>Completed tasks:</b> ' + rows[i].count_complete + '<br>'
-                                    + '<b>Remaining tasks:</b> ' + rows[i].count_incomplete + '<br>';
+                                    + '<b>Remaining tasks:</b> ' + rows[i].count_incomplete + '<br>'
+                                    + '<table style="background-color:#009688; text-align:center; border-radius:4px; margin-top:1rem; padding:3px;"> <tr><th>Month</th><th>Deliveries</th></tr>'
+                                    + '<tr> <td> January :</td>' + '<td>' + rows[i].count_jan + '</td></tr>'
+                                    + '<tr> <td> February :</td>' + '<td>' + rows[i].count_feb + '</td></tr>'
+                                    + '<tr> <td> March :</td>' + '<td>' + rows[i].count_mar + '</td></tr>'
+                                    + '<tr> <td> April :</td>' + '<td>' + rows[i].count_apr + '</td></tr>'
+                                    + '<tr> <td> May :</td>' + '<td>' + rows[i].count_may + '</td></tr>'
+                                    + '<tr> <td> June :</td>' + '<td>' + rows[i].count_jun + '</td></tr>'
+                                    + '<tr> <td> July :</td>' + '<td>' + rows[i].count_jul + '</td></tr>'
+                                    + '<tr> <td> August :</td>' + '<td>' + rows[i].count_aug + '</td></tr>'
+                                    + '<tr> <td> September :</td>' + '<td>' + rows[i].count_sep + '</td></tr>'
+                                    + '<tr> <td> October :</td>' + '<td>' + rows[i].count_oct + '</td></tr>'
+                                    + '<tr> <td> November :</td>' + '<td>' + rows[i].count_nov + '</td></tr>'
+                                    + '<tr> <td> December :</td>' + '<td>' + rows[i].count_dec + '</td></tr></table>';
+
                                     
 
             row.appendChild(td_driver);
@@ -219,10 +235,83 @@ xhttp3.send()
 
 function showStat(){
     stat_area.hidden = !stat_area.hidden
-
 }
 
 // search driver
+
+    let search_div = document.getElementById("search-driver")
+    search_div.hidden = true;
+    function showSearch(){
+            let search_div = document.getElementById("search-driver")
+            search_div.hidden = !search_div.hidden;
+    }
+    let search_content = "<br><input id='f_name' type='text' placeholder='Driver first name' onchange='setFN()' style='min-width: 200px'>" + 
+                         "<br><input id='l_name' type='text' placeholder='Driver last name' onchange='setLN()' style='min-width: 200px'>"+
+                         "<br><input type='button' id='sub-btn' value='Search' class='nav-btn' style='text-decoration: none; min-width: 200px; text-decoration:none;color:#fff;padding:10px 12px; border: 2px solid #111; border-radius:.5rem; font-weight:500; font-size:1rem; transition: all 1s; background-color: #009688'> <br>";
+
+    search_div.innerHTML = "<form action='./searchDriver.php' method='post'>" + search_content + "</form> <div id='search_res'> </div>"
+
+        let f_name, l_name
+
+        function setFN() {
+            f_name = document.getElementById('f_name').value;
+            console.log(f_name)
+        }
+
+        function setLN() {
+            l_name = document.getElementById('l_name').value;
+            console.log(l_name)
+        }
+
+        document.getElementById('f_name').addEventListener('change', setFN());
+        document.getElementById('l_name').addEventListener('change', setLN());
+        document.getElementById('sub-btn').addEventListener('click',()=>{
+            var xhr = new XMLHttpRequest();
+
+            let data = {f_name: f_name, l_name: l_name}
+                xhr.open("POST", "./searchDriver.php", false);
+                xhr.setRequestHeader("Content-Type", "utf-8");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                    var res = JSON.parse(this.responseText);
+
+                    let table = document.createElement('table')
+                    // table headers
+                    let thead = document.createElement('thead')
+
+                    let thead_content = "<th>Name</th>" + 
+                                        "<th>Location today</th>" + 
+                                        "<th>Description</th>" + 
+                                        "<th>Delivery status</th>" + 
+                                        "<th>Truck</th>" + 
+                                        "<th>Driver status</th>";
+
+                    thead.innerHTML = thead_content
+                    table.appendChild(thead)
+                    
+                    
+
+                    console.log("PHP Script response: "+res);
+                    let tbody_content = "<td>"+ res.name +"</td>" + 
+                                        "<td>"+ res.delivery_location +"</td>" + 
+                                        "<td>"+ res.order_desc +"</td>" + 
+                                        "<td>"+ res.delivery_status +"</td>" + 
+                                        "<td>"+ res.truck_no_plate +"</td>" + 
+                                        "<td>"+ res.work_status +"</td>";
+                    
+                    let tbody = document.createElement('tbody')
+                    tbody.innerHTML = tbody_content;
+                    table.appendChild(tbody)
+                    document.getElementById('search_res').appendChild(table)
+
+                    }
+                };
+                xhr.send(JSON.stringify(data));
+                console.log("sent data: "+JSON.stringify(data));
+        })
+
+
+       
 
 // expect input of name or emp_id and receive location, delivery details and monthly report
 

@@ -53,75 +53,10 @@ nav section button {
     font-size: 1.3rem;
     font-weight: 500;
     margin: 5px 15px;
-    padding-bottom: -1px;
-    padding-top: -2px;
+    /* padding-bottom: -1px;
+    padding-top: -2px; */
 }
 
-
-
-/* .left-nav{
-    flex-basis: 20%;
-    flex-grow: 2;
-    flex-shrink: 8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: fit-content;
-    background-color: var(--hima_green);
-    padding: 10px;
-    border-radius: 10px;
-    padding: 2rem 0 -3rem 0;
-    position: relative;
-} */
-
-/* .left-nav{
-    
-}
-
-
-
-.left-nav img{
-    margin: 0 0 3px 0;
-}
-
-.left-nav div{
-    font-size: 1rem;
-    margin: 15px 0 2px 0;
-    color: #FFF;
-}
-
-.left-nav section{
-    border: 3px solid #009688;
-    background-color: white;
-    width: 98%;
-    text-align: center;
-    padding: 1rem 0;
-    margin: .5rem 0px;
-    border-radius: 1rem;
-    color: #000;
-} */
-
-/* 
-
-.left-nav section button{
-    color: #000;
-    font-size: 1rem;
-}
-
-.left-nav section button:hover{
-    color: #009688;
-    font-size: 1.3rem;
-    transition: all .4s;
-}
-
-.left-nav section button a{
-    text-decoration: none;
-    color: #000;
-}
-
-.img-bottom{
-    width: 100%;
-} */
 /* ########################################################### */
 
 #profile{
@@ -278,3 +213,31 @@ tbody tr td{
 .row{
     color: black;
 }
+
+/* ######################################################################################## */
+
+.l-nav-btn{
+    padding: 10px;
+    border-radius: 4px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    transition: all .5s;
+    font-size: 1rem;
+    height: fit-content;
+    width: fit-content;
+   
+}
+
+.l-nav-btn:hover{
+    color: #009688;
+    background-color: #fff;
+}
+
+#search-driver {
+    display: grid;
+    place-content: center;
+    background-color: #009688;
+    color: #fff;
+
+}
+
