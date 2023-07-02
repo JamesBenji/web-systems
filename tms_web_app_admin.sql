@@ -1,143 +1,52 @@
-CREATE DATABASE Hima_TMS_database;
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jul 02, 2023 at 12:41 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
-USE Hima_TMS_database;
-
-CREATE TABLE TMS_driver(
-
-    emp_id VARCHAR(4) NOT NULL,
-    f_name VARCHAR(15) NOT NULL,
-    l_name VARCHAR(15) NOT NULL,
-    sex CHAR(1) NOT NULL,
-    tel_no VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    residence VARCHAR(100) NOT NULL,
-    date_of_birth DATE NOT NULL,
-    emp_img LONGBLOB,
-    emp_img_type VARCHAR(5) NOT NULL,
-    permit_no VARCHAR(20) NOT NULL,
-    work_status VARCHAR(14) NOT NULL DEFAULT 'available',
-
-    acc_password VARCHAR(100) NOT NULL DEFAULT 'newUser',
-    acc_status VARCHAR(10) NOT NULL DEFAULT 'new',
-    last_login DATE,
-    `role` VARCHAR(20) NOT NULL DEFAULT 'driver',
-    CHECK (sex IN ('M' or 'F')),
-    CHECK (CHAR_LENGTH(acc_password) > 5),
-    PRIMARY KEY (`emp_id`)
-);
-
-CREATE TABLE TMS_manager(
-
-    emp_id VARCHAR(4) NOT NULL,
-    f_name VARCHAR(15) NOT NULL,
-    l_name VARCHAR(15) NOT NULL,
-    sex CHAR(1) NOT NULL,
-    tel_no VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    residence VARCHAR(100) NOT NULL,
-    date_of_birth DATE NOT NULL,
-    emp_img LONGBLOB,
-    emp_img_type VARCHAR(5) NOT NULL,
-    acc_password VARCHAR(100) NOT NULL DEFAULT 'newUser',
-    acc_status VARCHAR(10) NOT NULL DEFAULT 'new',
-    last_login DATE,
-    `role` VARCHAR(20) NOT NULL DEFAULT 'manager',
-    CHECK (sex IN ('M' or 'F')),
-    CHECK (CHAR_LENGTH(acc_password) > 5),
-    PRIMARY KEY (`emp_id`)
-);
-
-CREATE TABLE TMS_web_app_admin(
-
-    emp_id VARCHAR(4) NOT NULL,
-    f_name VARCHAR(15) NOT NULL,
-    l_name VARCHAR(15) NOT NULL,
-    sex CHAR(1) NOT NULL,
-    tel_no VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    residence VARCHAR(100) NOT NULL,
-    date_of_birth DATE NOT NULL,
-    emp_img LONGBLOB,
-    emp_img_type VARCHAR(5) NOT NULL,
-    acc_password VARCHAR(30) NOT NULL DEFAULT 'newUser',
-    last_login DATE,
-    `role` VARCHAR(20) NOT NULL DEFAULT 'admin',
-    CHECK (sex IN ('M' or 'F')),
-    CHECK (CHAR_LENGTH(acc_password) > 5),
-    PRIMARY KEY (`emp_id`)
-);
-
-CREATE TABLE TMS_truck(
-
-    no_plate VARCHAR(10) NOT NULL,
-    max_capacity VARCHAR(10) NOT NULL,
-    model VARCHAR(10) NOT NULL,
-    current_status TEXT NOT NULL DEFAULT 'Parked',
-    PRIMARY KEY (`no_plate`)
-);
-
-CREATE TABLE TMS_customer(
-
-    customer_id VARCHAR(4) NOT NULL,
-    customer_name VARCHAR(15) NOT NULL,
-    `name` VARCHAR(15) NOT NULL,
-    customer_type VARCHAR(10) DEFAULT 'Business',
-    sex CHAR(1),
-    tel_no VARCHAR(15) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    `location` VARCHAR(100) NOT NULL,
-    CHECK (sex IN ('M' or 'F')),
-    PRIMARY KEY (`customer_id`)
-);
-
-CREATE TABLE TMS_order(
-
-    order_id VARCHAR(4) NOT NULL,
-    order_qty INT NOT NULL,
-    order_desc TEXT NOT NULL,
-    order_date DATE NOT NULL,
-    due_date DATE NOT NULL,
-    delivery_location VARCHAR(100) NOT NULL,
-    order_status TEXT NOT NULL DEFAULT 'Unassigned',
-    customer_id VARCHAR(4) NOT NULL,
-    PRIMARY KEY (`order_id`),
-    FOREIGN KEY (`customer_id`) REFERENCES TMS_customer(`customer_id`)
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-CREATE TABLE TMS_delivery(
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-    delivery_id VARCHAR(4) NOT NULL,
-    delivery_date_start DATE NOT NULL,
-    delivery_date_end DATE NOT NULL,
-    delivery_status TEXT DEFAULT 'Not completed',
-    order_id VARCHAR(4) NOT NULL,
-    emp_id VARCHAR(4) NOT NULL,
-    truck_no_plate VARCHAR(10) NOT NULL,
-    PRIMARY KEY (`delivery_id`),
-    FOREIGN KEY (`order_id`) REFERENCES TMS_order(`order_id`),
-    FOREIGN KEY (`emp_id`) REFERENCES TMS_driver(`emp_id`),
-    FOREIGN KEY (`truck_no_plate`) REFERENCES TMS_truck(`no_plate`)
-);
+--
+-- Database: `hima_tms_database`
+--
 
--- CREATING INSERTION SEQUENCE
-CREATE SEQUENCE emp_id_sequence START WITH 1 INCREMENT BY 1;
+-- --------------------------------------------------------
 
--- CREATING THE TRIGGER FOR FORMATTING id VALUES
+--
+-- Table structure for table `tms_web_app_admin`
+--
 
-DELIMITER //
-CREATE TRIGGER `before_insert_emp_driver`BEFORE INSERT ON `TMS_driver` FOR EACH ROW 
-BEGIN
-SET NEW.emp_id = CONCAT('E', LPAD(NEXT VALUE FOR `emp_id_sequence`, 4, '0'));
-END //
-DELIMITER;
+CREATE TABLE `tms_web_app_admin` (
+  `emp_id` varchar(4) NOT NULL,
+  `f_name` varchar(15) NOT NULL,
+  `l_name` varchar(15) NOT NULL,
+  `sex` char(1) NOT NULL,
+  `tel_no` varchar(15) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `residence` varchar(100) NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `emp_img` longblob DEFAULT NULL,
+  `emp_img_type` varchar(5) NOT NULL,
+  `acc_password` varchar(30) NOT NULL DEFAULT 'newUser',
+  `last_login` date DEFAULT NULL,
+  `role` varchar(20) NOT NULL DEFAULT 'admin',
+  `acc_status` varchar(20) NOT NULL DEFAULT 'new'
+) ;
 
--- checking for the trigger
-
---##########################################################################
-
---add Tms_web_app_admin data
-
+--
+-- Dumping data for table `tms_web_app_admin`
+--
 
 INSERT INTO `tms_web_app_admin` (`emp_id`, `f_name`, `l_name`, `sex`, `tel_no`, `email`, `residence`, `date_of_birth`, `emp_img`, `emp_img_type`, `acc_password`, `last_login`, `role`, `acc_status`) VALUES
 ('A006', 'Emily', 'Anderson', 'F', '555666777', 'emily.anderson@gmail.com', '987 Elm St', '1986-05-11', NULL, 'GIF', 'password345', NULL, 'admin', 'new');
@@ -169,6 +78,6 @@ ALTER TABLE `tms_web_app_admin`
   ADD PRIMARY KEY (`emp_id`);
 COMMIT;
 
---####################################################################
-
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

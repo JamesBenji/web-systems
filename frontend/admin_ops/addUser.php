@@ -27,9 +27,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $status = mysqli_query($connection, $insert_q);
 
-    echo $status;
-    header("Location: ../dashboard/dashboard_admin.php");
-
+    if($status){
+        echo "<h1>Success</h1>";
+    } else {
+        echo "<h1>Failed</h1>";
+    }
     
 }
 
