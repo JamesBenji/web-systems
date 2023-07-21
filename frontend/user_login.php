@@ -26,7 +26,7 @@
             <option value="web_app_admin">Admin</option>
         </select></label><br><br>
         <a href="../controller/forgotPass.php" id="f_pass">Forgot Password? </a> <br> <br>
-        <input type="submit" name="login" value="Login"> 
+        <input type="submit" name="login" value="Login User"> 
 
     </form>
 
