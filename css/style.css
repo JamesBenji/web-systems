@@ -1,0 +1,174 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+
+*{
+    font-family: 'Poppins', "sans serif";
+    font-size: 1rem;
+    margin: 0;
+}
+/* css custom variables */
+:root{
+    --hima_green: #009688;
+}
+
+header{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    margin-top: 1rem;
+}
+
+.logo{
+    display: flex;
+    min-height: fit-content;
+    margin-top: fit-content;
+
+}
+
+#vertical-line{
+    width: 3px;
+    background-color: var(--hima_green);
+    height: auto;
+    margin: 0 10px 0 10px;
+}
+
+#logo-text{
+    padding: 0;
+    font-weight: 600;
+}
+
+
+#nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    display: flex;
+}
+
+#nav ul li{
+    margin: 20px;
+}
+
+#nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+#nav ul li a:hover{
+    color: var(--hima_green);
+}
+
+#nav ul li a::after{
+    content: '';
+    display: block;
+    background-color: var(--hima_green);
+    height: 3px;
+    align-content: center;
+    float: right;
+    width: 0;
+    transition: all 1s;
+}
+
+#nav ul li a:hover::after{
+    width: 100%;
+}
+
+.nav-btn{
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--hima_green);
+    padding: .3rem 1rem;
+    border: 2px solid var(--hima_green);
+    border-radius: .5rem;
+    font-weight: 500;
+    transition: all 1s;
+}
+
+.big-btn{
+    font-size: 1.4rem;
+    padding: 0.6rem;
+}
+
+hr{
+    height: 10px;
+    margin-bottom: 0;
+}
+
+
+/* homepage styling */
+
+main{
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,0.45)), url("../images/from_website_road.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.homepage{
+    position: absolute;
+    width: 100%;
+    top: 20%;
+    left: 0;
+    font-size: 3rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.homepage-hr{
+    display: flex;
+    justify-content: space-around;
+}
+
+.homepage-text button{
+    margin-top: 2rem;
+
+    background-color: var(--hima_green);
+    padding: .3rem 1rem;
+    border: 2px solid var(--hima_green);
+    border-radius: .5rem;
+    color: #fff;
+    font-weight: 500;
+    transition: all 1s;
+}
+
+.homepage-text button:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
+.homepage-text{
+    font-size: 3.4rem;
+}
+
+.homepage img{
+    border-radius: 1rem;
+    max-height: 200px;
+    transform: scale(1.3);
+    margin-top: 3%;
+}
+
+#about,
+#contact{
+    width: 80%;
+    margin: 3rem auto auto auto;
+}
+
+#about h1, 
+#contact h1{
+    color: var(--hima_green);
+    font-size: 3.5rem;
+}

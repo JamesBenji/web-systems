@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./frontend/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Hima Cement | TMS</title>
 </head>
 <body>
     <header>
         <section class="logo">
-            <img src="./frontend/hima_logo.png" alt="Hima Logo" width="100px">
+            <img src="./images/hima_logo.png" alt="Hima Logo" width="100px">
             <div id="vertical-line"></div>
             <div id="logo-text">Truck<br> Monitoring<br> System</div>
         </section>
@@ -26,7 +26,7 @@
         </section>
 
         <section>
-            <a href="./frontend/user_login.php" class="nav-btn">Login</a>
+            <a href="./user_login.php" class="nav-btn">Login</a>
         </section>
     </header>
 
@@ -40,9 +40,9 @@
         <div class="homepage" id="home">
             <div class="homepage-hr">
                 <div class="homepage-text">Delivering to<br> our customers<br> in time<br>
-                <a href="./frontend/user_login.php" class="nav-btn big-btn">Login</a>
+                <a href="./user_login.php" class="nav-btn big-btn">Login</a>
                 </div>
-            <img src="./frontend/hima_truck.jpg" alt="Hima Truck" width="350px">
+            <img src="./images/hima_truck.jpg" alt="Hima Truck" width="350px">
             </div>
             
 
@@ -66,7 +66,7 @@
         <p><br><b>Join us</b> on this exciting journey as we shape the 
         future of cement transportation together.</p>
         <section>
-            <br><br><a href="./frontend/user_login.php" class="nav-btn">Login</a>
+            <br><br><a href="./user_login.php" class="nav-btn">Login</a>
         </section>
 
         
